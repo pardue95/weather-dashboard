@@ -26,8 +26,8 @@ fetch(apiUrl)
 });
 };
 
-var citySubmitHandler = function() {
-    // event.preventDefault();
+var citySubmitHandler = function(event) {
+    event.preventDefault();
     console.log(event);
     // get value from input element
 var selectedCity = cityInputEl.value.trim();
