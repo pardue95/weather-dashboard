@@ -1,47 +1,64 @@
 var cityFormEl = document.querySelector("#city-form")
-var cityInputEl =  document.querySelector("#selected-city");
-console.log(cityInputEl)
+var cityInputEl = document.querySelector("#selected-city");
+var citySearchEl = document.querySelector("#current-city")
+var forecastInputEl = document.querySelector("#forecast-container")
 
 
+var fiveDayForecast = function(cityName) {
+    var apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=1a32bd1a7ece5ed4c04eaf133d9d2a51";
+    console.log(cityName)
+    // make a get request to url
+    fetch(apiUrl)
+        .then(function(response) {
+            // request was successful
+            if (response.ok) {
+                // console.log(response);
+                response.json().then(function(data) {
+                    console.log(data);
+                    displayForecast(data, cityName)
+                });
+            } else {
+                alert('Error: ' + response.statusText);
+            }
+        })
+        .catch(function(error) {
+            alert('Unable to connect to OpenWeather');
+        });
+    if (cityName) {
 
-var fiveDayForecast = function(cityName){
-    var apiUrl ="https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=1a32bd1a7ece5ed4c04eaf133d9d2a51";
-console.log(apiUrl)
-// make a get request to url
-fetch(apiUrl)
-.then(function(response) {
-  // request was successful
-  if (response.ok) {
-    // console.log(response);
-    response.json().then(function(data) {
-      console.log(data);
- 
-    });
-  } else {
-    alert('Error: ' + response.statusText);
-  }
-})
-.catch(function(error) {
-  alert('Unable to connect to OpenWeather');
-});
+    }
+
 };
-
+// function for submit
 var citySubmitHandler = function(event) {
     event.preventDefault();
     console.log(event);
     // get value from input element
-var selectedCity = cityInputEl.value.trim();
+    var selectedCity = cityInputEl.value.trim();
 
-console.log(selectedCity)
-if (selectedCity) {
-  fiveDayForecast(selectedCity);
-  cityInputEl.value = "";
-} else {
-  alert("Please enter a city");
+    console.log(selectedCity)
+    if (selectedCity) {
+        fiveDayForecast(selectedCity);
+        cityInputEl.value = "";
+    } else {
+        alert("Please enter a city");
+    }
+};
+
+var displayForecast = function(forecast, selectedCity) {
+    // if (forecast.length === 0) {
+    //     forecastInputEl.textContent = "No forecasts found.";
+    //     return;
+    // }
+    console.log(forecast);
+    console.log(selectedCity);
+    // clear old content
+    citySearchEl.textContent = "";
+    citySearchEl.textContent = selectedCity;
+    console(selectedCity)
 }
-  };
+cityFormEl.addEventListener("submit", citySubmitHandler)
 
-  cityFormEl.addEventListener("submit", citySubmitHandler)
 
 
 
