@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Hello Bulma!</title>
+    <title>Weather Dashboard</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
@@ -14,13 +14,21 @@
       <h1 class="title has-text-centered">Weather Dashboard</h1>
     </header>
     <main class="columns">
-      <section class="sidebar column is-one-quarter is-narrow section" id="city-search">
+      <section
+        class="sidebar column is-one-quarter is-narrow section"
+        id="city-search"
+      >
         <div>
           <form id="city-form">
             <div class="field">
               <label class="label">Search for a City</label>
               <div class="control">
-                <input class="input" id="selected-city"  type="text" placeholder="San Diego" />
+                <input
+                  class="input"
+                  id="selected-city"
+                  type="text"
+                  placeholder="San Diego"
+                />
               </div>
               <div class="control">
                 <button class="button is-primary">Search</button>
@@ -31,15 +39,20 @@
       </section>
       <section class="column section">
         <!-- Current City Weather   -->
-        <section class="current-city box" id="current-city">
-          Current City Weather
-        </section>
+        <article class="current-city box">
+          <ul>
+            <li id="current-city"></li>
+            <li id="temp">Temp:</li>
+            <li id="wind">Wind:</li>
+            <li id="humidity">Humidity:</li>
+            <li class="uv-index" id="uv">UV Index :<span id="uv-index"></span></li>
+          </ul>
+        </article>
         <!--  Forecast  -->
         <section class="five-day-forecast" id="forecast">
-        
-          <h2 class="subtitle">5 Day forecast: </h2>
+          <h2 class="subtitle">5 Day forecast:</h2>
 
-<!-- Forecast Cards-->
+          <!-- Forecast Cards-->
           <div id="forecast-container cards" class="list-group">
             <div class="container">
               <div class="columns">
@@ -54,7 +67,12 @@
         </section>
       </section>
     </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
- <script src="assets\js\script.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="assets\js\script.js"></script>
   </body>
 </html>
