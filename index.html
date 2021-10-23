@@ -41,10 +41,11 @@
         <!-- Current City Weather   -->
         <article class="current-city box">
           <ul>
-            <li id="current-city"></li>
-            <li id="temp">Temp:</li>
-            <li id="wind">Wind:</li>
-            <li id="humidity">Humidity:</li>
+            <li id="current-city"><span class="current-date"></span></li>
+            <li>Temp: <span id = temp><span>&#8457;</span>
+            });</span></li>
+            <li>Wind: <span id="wind"></span></li>
+            <li>Humidity:<span  id="humidity" ></span></li>
             <li class="uv-index" id="uv">UV Index :<span id="uv-index"></span></li>
           </ul>
         </article>
@@ -73,6 +74,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.0.2/build/global/luxon.min.js"></script>
     <script src="assets\js\script.js"></script>
   </body>
 </html>
