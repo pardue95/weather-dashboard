@@ -7,27 +7,26 @@ var windOutput = document.querySelector("#wind");
 var humidityOutputEl = document.querySelector("#humidity")
 var uvOutputEl = document.querySelector("#uv-index")
 
+var savedCities= []
+console.log(savedCities)
+
 var dateTime = luxon.DateTime.now().toFormat('MMMM dd, yyyy')
 console.log(dateTime)
 
 
 var fiveDayForecast = function(cityName) {
     var apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=1a32bd1a7ece5ed4c04eaf133d9d2a51";
-
-    // make a get request to url
+  // make a get request to url
     fetch(apiUrl)
         .then(function(response) {
             // request was successful
             if (response.ok) {
-
                 response.json().then(function(data) {
-
-                    displayForecast(data, cityName)
-
+                    citySearchEl.textContent = "";
+                     displayForecast(data, cityName)
                     var lat = data.city.coord.lat
                     var long = data.city.coord.lon
                     getUV(lat, long)
-
                 });
             } else {
                 alert('Error: ' + response.statusText);
@@ -36,12 +35,7 @@ var fiveDayForecast = function(cityName) {
         .catch(function(error) {
             alert('Unable to connect to OpenWeather');
         });
-
 }
-
-
-
-
 
 // function for submit
 var citySubmitHandler = function(event) {
@@ -50,13 +44,17 @@ var citySubmitHandler = function(event) {
     // get value from input element
     var selectedCity = cityInputEl.value.trim();
 
-
     if (selectedCity) {
         fiveDayForecast(selectedCity);
         cityInputEl.value = "";
     } else {
         alert("Please enter a city");
-    }
+    };
+
+savedCities.push(selectedCity);
+
+JSON.parse(localStorage.getItem("cities")) || [];
+    localStorage.setItem("cities", JSON.stringify(savedCities));
 };
 
 var displayForecast = function(forecast, selectedCity) {
@@ -64,9 +62,8 @@ var displayForecast = function(forecast, selectedCity) {
     //     forecastInputEl.textContent = "No forecasts found.";
     //     return;
     // }
-
-    // clear old content
-    citySearchEl.textContent = "";
+//  savedCities = JSON.parse(localStorage.getItem("cities"));
+//     // clear old content
     citySearchEl.textContent = "    " + selectedCity + "   (" + dateTime + ")";
     console.log(selectedCity);
 };
@@ -76,6 +73,8 @@ cityFormEl.addEventListener("submit", citySubmitHandler);
 
 var getUV = function(lat, long) {
     var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + long + "&units=imperial&exclude=hourly,minutely,alerts&appid=1a32bd1a7ece5ed4c04eaf133d9d2a51"
+  
+   
     fetch(apiUrl)
         .then(function(response) {
             response.json().then(function(data) {
@@ -119,3 +118,4 @@ console.log(uvIndex)
     }
    
 };
+
