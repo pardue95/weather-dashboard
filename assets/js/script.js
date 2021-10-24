@@ -7,6 +7,7 @@ var windOutput = document.querySelector("#wind");
 var humidityOutputEl = document.querySelector("#humidity")
 var uvOutputEl = document.querySelector("#uv-index")
 var foreCastOne = document.querySelector("#date1")
+var cityList = document.querySelector("#savedCities")
 var savedCities = []
 console.log(foreCastOne)
 
@@ -25,12 +26,14 @@ var fiveDayForecast = function (cityName) {
 			if (response.ok) {
 				response.json().then(function (data) {
 					citySearchEl.textContent = "";
-                    console.log(data.list[0].weather[0].icon)
+                 
 					displayForecast(data, cityName)
 					var lat = data.city.coord.lat
 					var long = data.city.coord.lon
 					getUV(lat, long)
                     displayFiveDay(data.list)
+					displayCityList(data.city.name)
+
 				});
 			} else {
 				alert('Error: ' + response.statusText);
@@ -56,6 +59,7 @@ var citySubmitHandler = function (event) {
 	};
 
 	savedCities.push(selectedCity);
+
 
 	JSON.parse(localStorage.getItem("cities")) || [];
 	localStorage.setItem("cities", JSON.stringify(savedCities));
@@ -119,8 +123,7 @@ var getUV = function (lat, long) {
 var displayFiveDay = function (forecast) {
   // itereate over the forecast to get just 5 days add 8 to i to adjust for 3 hour forecasts  
     for (var i = 5; i < forecast.length; i+=8 ){
-    console.log(forecast[0].weather[0].icon);
-    console.log(forecast[i].dt_txt)};
+    };
 
 	foreCastOne.textContent =  forecast[0].dt_txt;
 // pull icon code and display
@@ -190,3 +193,27 @@ temp5.textContent = "Temp: " + Math.floor(forecast[4].main.temp) + " ℉";
     
 
 };
+
+var displayCityList = function (city){
+	var newCity = city
+
+	var listEl = $("<li>"+ newCity + "</li>");
+	
+	$(listEl).attr("class","list-group-item");
+	$(".savedCities").append(listEl);
+	
+	// cityEl.textContent = newCity;
+
+	// document.body.insert(cityListEL, cityList)
+	// $(".savedCities").append(newCity);
+	// $( "li" ).appendTo( $( ".savedCities" ) );
+	$(".list-group-item" ).click(function() {
+		
+		var txt =  $( ".list-group-item")[0].outerText
+		console.log(txt)
+		displayFiveDay(txt);
+	  });
+
+
+};
+

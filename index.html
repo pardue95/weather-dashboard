@@ -31,22 +31,24 @@
                 />
               </div>
               <div class="control">
-                <button class="button is-primary">Search</button>
+                <button class="button is-link">Search</button>
               </div>
             </div>
           </form>
         </div>
-        <ul id="savedCities"></ul>
+        <div>
+          <ul class="savedCities">
+
+          </ul>
+        </div>
       </section>
       <section class="column section">
         <!-- Current City Weather   -->
         <article class="current-city box">
           <ul>
             <li id="current-city"><span class="current-date"></span></li>
-            <img src="" id="icon-current">
-            <li>
-              Temp: <span id="temp"> });</span>
-            </li>
+            <img src="" id="icon-current" />
+            <li>Temp: <span id="temp"> });</span></li>
             <li>Wind: <span id="wind"></span></li>
             <li>Humidity:<span id="humidity"></span></li>
             <li class="uv-index" id="uv">
@@ -62,7 +64,7 @@
           <div id="forecast-container cards" class="list-group">
             <div class="container">
               <div class="columns">
-                <div class="column card1">
+                <div class="column card1 has-background-info mx-1">
                   <ul id="forecast-one">
                     <li class="card-header" id="date1"></li>
                     <li><img id="icon1" src="" alt="" /></li>
@@ -71,36 +73,36 @@
                     <li id="humidity1"></li>
                   </ul>
                 </div>
-                <div class="column card2">  
-                     <ul id="forecast-two">
-                  <li id="date2">tues</li>
-                  <li><img id="icon2" src="" alt="" /></li>
-                  <li id="temp2">Temp:</li>
-                  <li id="wind2"></li>
-                  <li id="humidity2"></li>
-                </ul>
-              </div>
-                <div class="column card3">
+                <div class="column card2 has-background-info mx-1">
+                  <ul id="forecast-two">
+                    <li class="card-header" id="date2">tues</li>
+                    <li><img id="icon2" src="" alt="" /></li>
+                    <li id="temp2">Temp:</li>
+                    <li id="wind2"></li>
+                    <li id="humidity2"></li>
+                  </ul>
+                </div>
+                <div class="column card3 has-background-info mx-1">
                   <ul id="forecast-three">
-                    <li id="date3">wed</li>
+                    <li class="card-header" id="date3">wed</li>
                     <li><img id="icon3" src="" alt="" /></li>
                     <li id="temp3">Temp:</li>
                     <li id="wind3"></li>
                     <li id="humidity3"></li>
                   </ul>
                 </div>
-                <div class="column card4">
+                <div class="column card4 has-background-info mx-1">
                   <ul id="forecast-four">
-                    <li id="date4">wed</li>
+                    <li class="card-header" id="date4">wed</li>
                     <li><img id="icon4" src="" alt="" /></li>
                     <li id="temp4">Temp:</li>
                     <li id="wind4"></li>
                     <li id="humidity4"></li>
                   </ul>
                 </div>
-                <div class="column card5">
+                <div class="column card5 has-background-info mx-1">
                   <ul id="forecast-five">
-                    <li id="date5">wed</li>
+                    <li class="card-header" id="date5">wed</li>
                     <li><img id="icon5" src="" alt="" /></li>
                     <li id="temp5">Temp:</li>
                     <li id="wind5"></li>
