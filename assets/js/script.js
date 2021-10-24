@@ -199,7 +199,7 @@ var displayCityList = function (city){
 
 	var listEl = $("<li>"+ newCity + "</li>");
 	
-	$(listEl).attr("class","list-group-item");
+	$(listEl).attr("class","list-group-item has-background-grey-lighter my-1 is-size-4 has-text-centered");
 	$(".savedCities").append(listEl);
 	
 	// cityEl.textContent = newCity;
