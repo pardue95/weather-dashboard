@@ -27,7 +27,7 @@ console.log(dayOneDate)
 
 var fiveDayForecast = function (cityName) {
 	var apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=1a32bd1a7ece5ed4c04eaf133d9d2a51";
-	// make a get request to url
+	// make a get request to to OpenWeather
 	fetch(apiUrl)
 		.then(function (response) {
 			// request was successful
@@ -41,7 +41,7 @@ var fiveDayForecast = function (cityName) {
 					getUV(lat, long)
                     displayFiveDay(data.list)
 					displayCityList(data.city.name)
-
+					var city = data.city.name
 				});
 			} else {
 				alert('Error: ' + response.statusText);
@@ -61,7 +61,7 @@ var citySubmitHandler = function (event) {
 	var selectedCity = cityInputEl.value.trim();
 
 	if (selectedCity) {
-		event.preventDefault();
+		// event.preventDefault();
 		fiveDayForecast(selectedCity);
 		cityInputEl.value = "";
 	} else {
@@ -71,7 +71,7 @@ var citySubmitHandler = function (event) {
 	savedCities.push(selectedCity);
 
 
-	JSON.parse(localStorage.getItem("cities")) || [];
+	
 	localStorage.setItem("cities", JSON.stringify(savedCities));
 };
 
@@ -109,7 +109,7 @@ var getUV = function (lat, long) {
 				windOutput.innerHTML = " " + windSpeed + " MPH";
 				var temp = Math.floor(data.current.temp);
 				tempOutputEl.innerHTML = " " + temp + " ℉";
-				var city = data
+				
 			});
 		})
 
@@ -220,6 +220,8 @@ var displayCityList = function (city){
 	
 	$(listEl).attr("class","list-group-item has-background-grey-lighter my-1 is-size-4 has-text-centered");
 	$(".savedCities").append(listEl);
+
+	
 	
 	// cityEl.textContent = newCity;
 
@@ -228,9 +230,8 @@ var displayCityList = function (city){
 	// $( "li" ).appendTo( $( ".savedCities" ) );
 	$(".list-group-item" ).click(function() {
 		
-		var txt =  $( ".list-group-item")[0].outerText
-		console.log(txt)
-		fiveDayForecast(txt);
+	
+		fiveDayForecast(newCity);
 	  });
 
 
