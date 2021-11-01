@@ -1,44 +1,13 @@
-## Weather Dashboard<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Hello Bulma!</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
-    />
-  </head>
-  <body>
-    <header>
-      <h1 class="title has-text-centered">Weather Dashboard</h1>
-    </header>
-    <main class="columns">
-      <section class="sidebar column is-one-quarter is-narrow" id="city-search">
-        <div>
-          <form>
-            <div class="field">
-              <label class="label">Search for a City</label>
-              <div class="control">
-                <input class="input" type="text" placeholder="San Diego" />
-              </div>
-              <div class="control">
-                <button class="button is-primary">Search</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </section>
-      <section class="column">
-        <!-- Current City Weather   -->
-        <section class="current-city" id="current-city">
-          Current City Weather
-        </section>
-        <!--  Forecast  -->
-        <section class="five-day-forecast" id="forecast">
-          <header class="title">Five Day Forecast</header>
-        </section>
-      </section>
-    </main>
-  </body>
-</html>
+## Weather Dashboard
+
+Welcome to the Weather Dashboard! This project uses HTML, JQuerey, and Bulma CSS.   Search a city in the United States for the current weather and a 5 day forecast!
+
+Github repository
+https://github.com/pardue95/weather-dashboard
+
+Live page deployed
+https://pardue95.github.io/weather-dashboard/
+
+
+
+![image](https://user-images.githubusercontent.com/85760640/139607229-c5e7068c-08d7-4240-8f5c-a70f2fb8df38.png)
